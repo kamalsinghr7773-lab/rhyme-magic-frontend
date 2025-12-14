@@ -3,7 +3,7 @@ async function generate() {
   const language = document.getElementById("language").value;
 
   const res = await fetch(
-    "https://YOUR-BACKEND-URL/generate-song",
+    "https://rhyme-magic-backend.onrender.com/generate-song",
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
