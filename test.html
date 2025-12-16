@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Song Generator Test</h3>
+
+<textarea id="text" placeholder="Enter rhyme text"></textarea>
+<br><br>
+
+<button onclick="test()">Generate Song</button>
+
+<br><br>
+<audio id="audio" controls></audio>
+
+<script>
+async function test() {
+  const res = await fetch(
+    "https://rhyme-magic-backend.onrender.com/generate-song",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        text: "Twinkle twinkle little star",
+        language: "english"
+      })
+    }
+  );
+
+  const blob = await res.blob();
+  document.getElementById("audio").src =
+    URL.createObjectURL(blob);
+}
+</script>
+
+</body>
+</html>
